@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test de Personalidad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        #quiz,
+        #resultado {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 300px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        #barra {
+            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        #progreso {
+            height: 100%;
+            width: 0%;
+            background: #4caf50;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="quiz">
+        <h2 id="pregunta">¿Te gusta la música?</h2>
+
+        <button onclick="siguiente()">Sí</button>
+        <button onclick="siguiente()">No</button>
+
+        <div id="barra">
+            <div id="progreso"></div>
+        </div>
+    </div>
+
+    <div id="resultado" style="display:none;">
+        <h2>🎉 Felicidades! 🎉</h2>
+        <p>Tu sorpresa musical:</p>
+        <audio id="miCancion" controls autoplay>
+        <source src="cancion.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+    </audio>
+    </div>
+
+    <script>
+        let preguntas = [
+            "¿Te gusta la música?",
+            "¿Escuchas música todos los días?",
+            "¿Te gustan las sorpresas?"
+        ];
+
+        let indice = 0;
+
+        function siguiente() {
+            indice++;
+            let progreso = ((indice) / preguntas.length) * 100;
+            document.getElementById("progreso").style.width = progreso + "%";
+
+            if (indice < preguntas.length) {
+                document.getElementById("pregunta").innerText = preguntas[indice];
+            } else {
+                mostrarResultado();
+            }
+        }
+
+        function mostrarResultado() {
+            // Oculta el quiz
+            document.getElementById("quiz").style.display = "none";
+
+            // Muestra la pantalla final
+            document.getElementById("resultado").style.display = "block";
+
+            // Reproduce la canción
+            document.getElementById("miCancion").play();
+        }
+    </script>
+
+</body>
+
+</html>
