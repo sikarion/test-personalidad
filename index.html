@@ -3,25 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Test de Personalidad 🎉</title>
+    <title>Test de Personalidad</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(120deg, #f6d365, #fda085);
-            color: #333;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
             text-align: center;
-            padding: 50px 20px;
-            transition: background 1s;
+            padding: 40px;
         }
         
         #quiz,
         #resultado {
             background: white;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 10px;
             display: inline-block;
-            width: 350px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 300px;
         }
         
         h2 {
@@ -29,20 +26,10 @@
         }
         
         button {
-            padding: 12px 25px;
+            padding: 10px 20px;
             margin: 10px;
             font-size: 16px;
             cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            background: #ff6f61;
-            color: white;
-            transition: transform 0.2s, background 0.3s;
-        }
-        
-        button:hover {
-            transform: scale(1.05);
-            background: #ff4c3b;
         }
         
         #barra {
@@ -58,38 +45,7 @@
             width: 0%;
             background: #4caf50;
             border-radius: 10px;
-            transition: width 0.5s;
-        }
-        
-        #resultado {
-            display: none;
-            animation: fadeIn 1s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        
-        #estrella {
-            font-size: 50px;
-            animation: girar 1.5s infinite linear;
-            display: block;
-            margin: 20px auto;
-            color: #ffdd00;
-        }
-        
-        @keyframes girar {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+            transition: width 0.3s;
         }
     </style>
 </head>
@@ -107,10 +63,9 @@
         </div>
     </div>
 
-    <div id="resultado">
-        <span id="estrella">⭐</span>
-        <h2>🎉 Sorpresa! 🎉</h2>
-        <p>Tu recompensa musical:</p>
+    <div id="resultado" style="display:none;">
+        <h2>🎉 Felicidades! 🎉</h2>
+        <p>Tu sorpresa musical:</p>
         <audio id="miCancion" controls autoplay>
         <source src="cancion.mp3" type="audio/mpeg">
         Tu navegador no soporta audio.
@@ -133,12 +88,6 @@
 
             if (indice < preguntas.length) {
                 document.getElementById("pregunta").innerText = preguntas[indice];
-                // Cambiar el fondo para animación
-                document.body.style.background = linear - gradient(120 deg, #$ {
-                    Math.floor(Math.random() * 16777215).toString(16)
-                }, #$ {
-                    Math.floor(Math.random() * 16777215).toString(16)
-                });
             } else {
                 mostrarResultado();
             }
