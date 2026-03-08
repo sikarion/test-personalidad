@@ -1,144 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<title>Test de Personalidad 🎉</title>
-<style>
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(120deg, #f6d365, #fda085);
-    color: #333;
-    text-align: center;
-    padding: 50px 20px;
-    transition: background 1s;
-}
-
-#quiz, #resultado {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    display: inline-block;
-    width: 350px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 12px 25px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    background: #ff6f61;
-    color: white;
-    transition: transform 0.2s, background 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-    background: #ff4c3b;
-}
-
-#barra {
-    height: 20px;
-    background: #ddd;
-    border-radius: 10px;
-    margin: 20px 0;
-    overflow: hidden;
-}
-
-#progreso {
-    height: 100%;
-    width: 0%;
-    background: #4caf50;
-    border-radius: 10px;
-    transition: width 0.5s;
-}
-
-#resultado {
-    display: none;
-    animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-#estrella {
-    font-size: 50px;
-    animation: girar 1.5s infinite linear;
-    display: block;
-    margin: 20px auto;
-    color: #ffdd00;
-}
-
-@keyframes girar {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Test de Personalidad 🎉</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #333;
+            text-align: center;
+            padding: 50px 20px;
+            transition: background 1s;
+        }
+        
+        #quiz,
+        #resultado {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            width: 350px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: #ff6f61;
+            color: white;
+            transition: transform 0.2s, background 0.3s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+            background: #ff4c3b;
+        }
+        
+        #barra {
+            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        #progreso {
+            height: 100%;
+            width: 0%;
+            background: #4caf50;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+        
+        #resultado {
+            display: none;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        #resultado img {
+            width: 200px;
+            display: block;
+            margin: 20px auto;
+            animation: rebote 1s infinite alternate;
+        }
+        
+        @keyframes rebote {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div id="quiz">
-    <h2 id="pregunta">¿Te gusta la música?</h2>
-    
-    <button onclick="siguiente()">Sí</button>
-    <button onclick="siguiente()">No</button>
-    
-    <div id="barra"><div id="progreso"></div></div>
-</div>
+    <div id="quiz">
+        <h2 id="pregunta">¿Te gusta la música?</h2>
 
-<div id="resultado">
-    <img src="gif1.gif" alt="Celebración" style="width:200px; display:block; margin: 0 auto;">
-    <h2>🎉 Sorpresa! 🎉</h2>
-    <p>Tu recompensa musical:</p>
-    <audio id="miCancion" controls autoplay>
+        <button onclick="siguiente()">Sí</button>
+        <button onclick="siguiente()">No</button>
+
+        <div id="barra">
+            <div id="progreso"></div>
+        </div>
+    </div>
+
+    <div id="resultado">
+        <img src="gif1.gif" alt="Celebración 🎉">
+        <img src="gif2.gif" alt="Celebración 1🎉">
+        <img src="gif3.gif" alt="Celebración 2🎉">
+        <img src="gif4.gif" alt="Celebración 3🎉">
+        <img src="gif4.gif" alt="Celebración 4🎉">
+        <h2>🎉 Felicidades! 🎉</h2>
+        <p>Tu recompensa musical:</p>
+        <audio id="miCancion" controls autoplay>
         <source src="cancion.mp3" type="audio/mpeg">
         Tu navegador no soporta audio.
     </audio>
-</div>
+    </div>
 
-<script>
-let preguntas = [
-    "¿Te gusta la música?",
-    "¿Escuchas música todos los días?",
-    "¿Te gustan las sorpresas?"
-];
+    <script>
+        let preguntas = [
+            "¿Te gusta la música?",
+            "¿Escuchas música todos los días?",
+            "¿Te gustan las sorpresas?"
+        ];
 
-let indice = 0;
+        let indice = 0;
 
-function siguiente(){
-    indice++;
-    let progreso = ((indice) / preguntas.length) * 100;
-    document.getElementById("progreso").style.width = progreso + "%";
+        function siguiente() {
+            indice++;
+            let progreso = (indice / preguntas.length) * 100;
+            document.getElementById("progreso").style.width = progreso + "%";
 
-    if(indice < preguntas.length){
-        document.getElementById("pregunta").innerText = preguntas[indice];
-        // Cambiar el fondo para animación
-        document.body.style.background = linear-gradient(120deg, #${Math.floor(Math.random()*16777215).toString(16)}, #${Math.floor(Math.random()*16777215).toString(16)});
-    } else {
-        mostrarResultado();
-    }
-}
+            if (indice < preguntas.length) {
+                document.getElementById("pregunta").innerText = preguntas[indice];
+                // Cambiar fondo aleatorio para animación
+                document.body.style.background = linear - gradient(120 deg, #$ {
+                    Math.floor(Math.random() * 16777215).toString(16)
+                }, #$ {
+                    Math.floor(Math.random() * 16777215).toString(16)
+                });
+            } else {
+                mostrarResultado();
+            }
+        }
 
-function mostrarResultado(){
-    // Oculta el quiz
-    document.getElementById("quiz").style.display = "none";
-
-    // Muestra la pantalla final
-    document.getElementById("resultado").style.display = "block";
-
-    // Reproduce la canción
-    document.getElementById("miCancion").play();
-}
-</script>
+        function mostrarResultado() {
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("resultado").style.display = "block";
+            document.getElementById("miCancion").play();
+        }
+    </script>
 
 </body>
-</html>
 
+</html>
