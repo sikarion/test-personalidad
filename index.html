@@ -3,22 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Test de Personalidad</title>
+    <title>Test de Personalidad 🎉</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f2f2f2;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            color: #333;
             text-align: center;
-            padding: 40px;
+            padding: 50px 20px;
+            transition: background 1s;
         }
         
         #quiz,
         #resultado {
             background: white;
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
             display: inline-block;
             width: 300px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
         h2 {
@@ -26,10 +29,20 @@
         }
         
         button {
-            padding: 10px 20px;
+            padding: 12px 25px;
             margin: 10px;
             font-size: 16px;
             cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: #ff6f61;
+            color: white;
+            transition: transform 0.2s, background 0.3s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+            background: #ff4c3b;
         }
         
         #barra {
@@ -45,7 +58,37 @@
             width: 0%;
             background: #4caf50;
             border-radius: 10px;
-            transition: width 0.3s;
+            transition: width 0.5s;
+        }
+        
+        #resultado {
+            display: none;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        #resultado img {
+            width: 200px;
+            display: block;
+            margin: 20px auto;
+            animation: rebote 1s infinite alternate;
+        }
+        
+        @keyframes rebote {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
         }
     </style>
 </head>
