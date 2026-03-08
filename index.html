@@ -116,13 +116,18 @@
     </div>
 
     <div id="resultado" style="display:none;">
-        <h2>🎉 Felicidades! 🎉</h2>
+        <h2>🎉 Pues toma sorpresa <br> Felicidades! 🎉</h2>
         <p>Tu sorpresa musical:</p>
         <img src="gif1.gif" alt="Celebración 🎉" class="gifcel1">
         <img src="gif2.gif" alt="Celebración 🎉" class="gifcel1">
         <img src="gif3.gif" alt="Celebración 🎉" class="gifcel1">
         <img src="gif4.gif" alt="Celebración 🎉" class="gifcel1">
         <img src="gif5.gif" alt="Celebración 🎉" class="gifcel1">
+
+        <!-- Mensaje personalizado -->
+        <h2>🎉 Felicidades, <span id="nombreFinal"></span>! 🎉</h2>
+        <p>Tu recompensa musical:</p>
+
         <audio id="miCancion" controls autoplay>
         <source src="cancion.mp3" type="audio/mpeg">
         Tu navegador no soporta audio.
@@ -131,33 +136,66 @@
 
     <script>
         let preguntas = [
+            "¿Cómo te llamas?",
             "¿Te gusta la música?",
             "¿Escuchas música todos los días?",
-            "¿Te gustan las sorpresas?"
+            "¿Te gustan los regalos?",
+            "¿Eres inteligente?",
+            "¿Estás seguro?",
+            "¿No quieres cambiar tu respuesta seguro?",
+            "¿Estás a tiempo todavía?",
+            "Venga, te la vuelvo a hacer. ¿Eres inteligente?",
+            "¿Te gusta el fútbol?",
+            "¿Te gusta el bicho siuuu?",
+            "¿Te gusta pepsi beeee?",
+            "¿Te gustan las sorpresas?",
+            "Dependiendo de lo que hayas elegido tendrás una sorpresa buena o mala. ¿Seguro que quieres continuar?"
         ];
 
         let indice = 0;
+        let nombre = "";
 
         function siguiente() {
+            let respuestasDiv = document.getElementById("respuestas");
+
+            // Guardar nombre
+            if (indice === 1) {
+                nombre = document.getElementById("inputNombre").value.trim();
+                if (nombre === "") return alert("Por favor, escribe tu nombre");
+            }
+
             indice++;
-            let progreso = ((indice) / preguntas.length) * 100;
+
+            // Actualizar barra
+            let progreso = (indice / preguntas.length) * 100;
             document.getElementById("progreso").style.width = progreso + "%";
 
+            // Mostrar siguiente pregunta
             if (indice < preguntas.length) {
                 document.getElementById("pregunta").innerText = preguntas[indice];
+
+                if (indice === 1) {
+                    respuestasDiv.innerHTML = `
+                <input type="text" id="inputNombre" placeholder="Escribe tu nombre">
+                <br>
+                <button onclick="siguiente()">Siguiente</button>
+            `;
+                } else {
+                    respuestasDiv.innerHTML = `
+                <button onclick="siguiente()">Sí</button>
+                <button onclick="siguiente()">No</button>
+            `;
+                }
+
             } else {
                 mostrarResultado();
             }
         }
 
         function mostrarResultado() {
-            // Oculta el quiz
             document.getElementById("quiz").style.display = "none";
-
-            // Muestra la pantalla final
             document.getElementById("resultado").style.display = "block";
-
-            // Reproduce la canción
+            document.getElementById("nombreFinal").innerText = nombre;
             document.getElementById("miCancion").play();
         }
     </script>
