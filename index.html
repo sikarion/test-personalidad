@@ -88,7 +88,7 @@
             width: 120px;
             margin: 5px;
             vertical-align: middle;
-            animation: rebote 1s infinite alternative;
+            animation: rebote 1s infinite alternate;
         }
         
         @keyframes rebote {
@@ -107,31 +107,33 @@
     <div id="quiz">
         <h2 id="pregunta">¿Te gusta la música?</h2>
 
-        <button onclick="siguiente()">Sí</button>
-        <button onclick="siguiente()">No</button>
+        <div id="respuestas">
+            <button onclick="siguiente()">Sí</button>
+            <button onclick="siguiente()">No</button>
+        </div>
 
         <div id="barra">
             <div id="progreso"></div>
         </div>
     </div>
 
-    <div id="resultado" style="display:none;">
-        <h2>🎉 Pues toma sorpresa <br> Felicidades! 🎉</h2>
+    <div id="resultado">
+        <h2>🎉 Pues toma sorpresa <br> ¡Felicidades! 🎉</h2>
         <p>Tu sorpresa musical:</p>
-        <img src="gif1.gif" alt="Celebración 🎉" class="gifcel1">
-        <img src="gif2.gif" alt="Celebración 🎉" class="gifcel1">
-        <img src="gif3.gif" alt="Celebración 🎉" class="gifcel1">
-        <img src="gif4.gif" alt="Celebración 🎉" class="gifcel1">
-        <img src="gif5.gif" alt="Celebración 🎉" class="gifcel1">
 
-        <!-- Mensaje personalizado -->
+        <img src="gif1.gif" class="gifcel1">
+        <img src="gif2.gif" class="gifcel1">
+        <img src="gif3.gif" class="gifcel1">
+        <img src="gif4.gif" class="gifcel1">
+        <img src="gif5.gif" class="gifcel1">
+
         <h2>🎉 Felicidades, <span id="nombreFinal"></span>! 🎉</h2>
         <p>Tu recompensa musical:</p>
 
         <audio id="miCancion" controls autoplay>
-        <source src="cancion.mp3" type="audio/mpeg">
-        Tu navegador no soporta audio.
-    </audio>
+            <source src="cancion.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio.
+        </audio>
     </div>
 
     <script>
@@ -176,15 +178,15 @@
 
                 if (indice === 1) {
                     respuestasDiv.innerHTML = `
-                <input type="text" id="inputNombre" placeholder="Escribe tu nombre">
-                <br>
-                <button onclick="siguiente()">Siguiente</button>
-            `;
+                        <input type="text" id="inputNombre" placeholder="Escribe tu nombre">
+                        <br>
+                        <button onclick="siguiente()">Siguiente</button>
+                    `;
                 } else {
                     respuestasDiv.innerHTML = `
-                <button onclick="siguiente()">Sí</button>
-                <button onclick="siguiente()">No</button>
-            `;
+                        <button onclick="siguiente()">Sí</button>
+                        <button onclick="siguiente()">No</button>
+                    `;
                 }
 
             } else {
