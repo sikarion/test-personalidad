@@ -75,19 +75,20 @@
             }
         }
         
-        #resultado img {
-            width: 200px;
+        #estrella {
+            font-size: 50px;
+            animation: girar 1.5s infinite linear;
             display: block;
             margin: 20px auto;
-            animation: rebote 1s infinite alternate;
+            color: #ffdd00;
         }
         
-        @keyframes rebote {
-            0% {
-                transform: translateY(0);
+        @keyframes girar {
+            from {
+                transform: rotate(0deg);
             }
-            100% {
-                transform: translateY(-20px);
+            to {
+                transform: rotate(360deg);
             }
         }
     </style>
@@ -107,12 +108,8 @@
     </div>
 
     <div id="resultado">
-        <img src="gif1.gif" alt="Celebración 🎉">
-        <img src="gif2.gif" alt="Celebración 1🎉">
-        <img src="gif3.gif" alt="Celebración 2🎉">
-        <img src="gif4.gif" alt="Celebración 3🎉">
-        <img src="gif4.gif" alt="Celebración 4🎉">
-        <h2>🎉 Felicidades! 🎉</h2>
+        <span id="estrella">⭐</span>
+        <h2>🎉 Sorpresa! 🎉</h2>
         <p>Tu recompensa musical:</p>
         <audio id="miCancion" controls autoplay>
         <source src="cancion.mp3" type="audio/mpeg">
@@ -131,12 +128,12 @@
 
         function siguiente() {
             indice++;
-            let progreso = (indice / preguntas.length) * 100;
+            let progreso = ((indice) / preguntas.length) * 100;
             document.getElementById("progreso").style.width = progreso + "%";
 
             if (indice < preguntas.length) {
                 document.getElementById("pregunta").innerText = preguntas[indice];
-                // Cambiar fondo aleatorio para animación
+                // Cambiar el fondo para animación
                 document.body.style.background = linear - gradient(120 deg, #$ {
                     Math.floor(Math.random() * 16777215).toString(16)
                 }, #$ {
@@ -148,8 +145,13 @@
         }
 
         function mostrarResultado() {
+            // Oculta el quiz
             document.getElementById("quiz").style.display = "none";
+
+            // Muestra la pantalla final
             document.getElementById("resultado").style.display = "block";
+
+            // Reproduce la canción
             document.getElementById("miCancion").play();
         }
     </script>
